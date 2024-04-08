@@ -1,32 +1,27 @@
 import MeetingTypeList from "@/components/MeetingTypeList";
 
 const Page = () => {
-  const getDate = () => {
-    let date = new Date();
-    let time = date.toLocaleTimeString().split(" ")[0].substring(0, 5);
-    let greet = date.toLocaleTimeString().split(" ")[1];
-    let todays = date.toDateString().split(" ");
-    let todayDate = `${todays[0]}, ${todays[1]} ${todays[2]}, ${todays[3]}`;
-    return {
-      time,
-      greet,
-      today: todayDate,
-    };
-  };
+  const now = new Date();
+
+  const time = now.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  const date = new Intl.DateTimeFormat("en-US", { dateStyle: "full" }).format(
+    now
+  );
   return (
     <section className="flex flex-col size-full gap-10 text-white">
       <div className="h-[300px] w-full rounded-[20px] bg-hero bg-cover">
         <div className="flex h-full flex-col justify-between max-md:px-5 max-md:py-8 lg:p-11">
           <h2 className="glassmorphism max-w-[270px] rounded py-2 text-center text-base font-normal">
-            Upcoming Meeting at 11:00 AM
+            Start Your Meeting
           </h2>
           <div className="flex flex-col gap-2">
             <h1 className="text-4xl font-extrabold lg:text-7xl uppercase">
-              {getDate().time} {getDate().greet}
+              {time}
             </h1>
-            <p className="text-lg font-medium text-sky-1 md:text-2xl">
-              {getDate().today}
-            </p>
+            <p className="text-lg font-medium text-sky-1 md:text-2xl">{date}</p>
           </div>
         </div>
       </div>
