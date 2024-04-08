@@ -10,7 +10,7 @@ export const sidebarLinks = [
     route: "/upcoming",
   },
   {
-    imgUrl: "/icons/Previous.svg",
+    imgUrl: "/icons/previous.svg",
     label: "Previous",
     route: "/previous",
   },
